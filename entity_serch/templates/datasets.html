@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}datasets page{% endblock %}
+
+{% block content %}
+    <header>
+        <h1>Доступные Датасеты</h1>
+    </header>
+    <div class="competitions-container">
+        {% for dataset in datasets %}
+        <div class="competition-card">
+            <h2 style="color: rgba(230, 230, 255, 0.9);">{{ dataset['title'] }}</h2> <!-- Мягко фиолетовый текст -->
+           <p class="competition-date">{{ dataset['created'] }}</p> 
+            <a href="{{ url_for('dataset_detail', dataset_password=dataset['password']) }}" class="join-button">Перейти к набору</a>
+        </div>
+        {% else %}
+        <p style="color: rgba(230, 230, 255, 0.9);">Нет доступных моделей.</p> <!-- Мягко фиолетовый текст -->
+        {% endfor %}
+    </div>
+    <a href="{{ url_for('create_dataset') }}" class="create-button">Создай коллекцию своих сущностей!</a>
+{% endblock %}
