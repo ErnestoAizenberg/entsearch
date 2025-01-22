@@ -1,18 +1,16 @@
 {% extends 'base.html' %}
-
 {% block title %} Dataset Details {% endblock %}
-{% block content %}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-<body>
-    <div class="container mt-5">
-        <h2>Dataset: {{ dataset['password'] }}</h2>
-        <h4>Entities:</h4>
-        <table class="table table-striped">
+
+{% block content %}
+
+    <div class="long-container">
+        <h2 class="grey-h">Dataset: {{ dataset['password'] }}</h2>
+        <h4 class="grey-h">Entities:</h4>
+        <table class="long-table">
             <thead>
                 <tr>
-
-                    <th>id</th>           
+                    <th>id</th>
                     <th>Entity Name</th>
                     <th>Description</th>
                     <th>Entity Name Embed</th>
@@ -21,8 +19,6 @@
             <tbody>
                 {% for entity in entities %}
                     <tr>
-
-
                         <td>{{ entity['foreign_identifier'] }}</td>
                         <td>{{ entity['entity_name'] }}</td>
                         <td>{{ entity['description'] }}</td>
@@ -31,7 +27,7 @@
                 {% endfor %}
             </tbody>
         </table>
-        <a href="/" class="btn btn-primary">Back to Upload</a>
+        <a href="{{ url_for('create_dataset_page') }}" class="green-link">Back to Upload</a>
     </div>
 
 {% endblock %}
