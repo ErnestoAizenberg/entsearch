@@ -16,4 +16,4 @@ def download_file(file, file_path):
         return file_path
     except Exception as e:
         print('Duuring the process of loading file an exception has occurred:', e)
-        return None￼Enter
+        return None
