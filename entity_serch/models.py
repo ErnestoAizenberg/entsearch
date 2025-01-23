@@ -57,4 +57,4 @@ class DatasetDAO:
 
 class EntityDAO:
     def get_column_values(self, ds_id, column_name):
-        raise NotImplementedErroro￼Enter
+        raise NotImplementedError
