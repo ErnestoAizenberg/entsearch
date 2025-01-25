@@ -58,7 +58,7 @@
 
     {% block content %}{% endblock %}
 
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js"></script>
+   <script src="{{ url_for('static', filename='js/socketio.min.js') }}"></script>
   <script src="{{ url_for('static', filename='js/all.min.js') }}"></script>
   {% block additional_js %}
   {% endblock %}
