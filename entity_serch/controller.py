@@ -15,7 +15,7 @@ import string
 from flask_socketio import emit
 
 
-from .utils import download_file
+from .utils import download_file, generate_random_password
 
 from entity_serch import UserRepository, DatasetRepository, EntityRepository
 from entity_serch import User, Dataset, Entity, nlp_model
@@ -79,9 +79,9 @@ def add_entities(df, Entity, entity_repo, dataset_id, structure):
 
 def insert_dataset(title, user_id, dataset_repo, Dataset):
     if not title:
-        title = secrets.token_urlsafe(12)
+        title = secrets.token_urlsafe(6)
     password = secrets.token_urlsafe(12)
-
+    #print("@#@#@#@##@@@", dataset_repo.get_dataset_by_password(password).id)
     dataset_id = dataset_repo.insert_dataset(
         Dataset(
             title=title,
@@ -96,7 +96,6 @@ def insert_dataset(title, user_id, dataset_repo, Dataset):
 
 @app.route('/create_dataset', methods=['POST'])
 def create_dataset():
-    time.sleep(0)
     user_id = session.get('user_id')
     title = request.form.get('name_file')
     file = request.files.get('csv-file')
@@ -109,9 +108,11 @@ def create_dataset():
         flash("error: пожалуйста выберите файл")
         return redirect(url_for('create_dataset_page'))
 
-    dataset_id = insert_dataset(title, user_id, dataset_repo, Dataset)
-    if not dataset_id:
-        flash("error: не удалось создать набор данных",)
+    dataset_id = insert_dataset(title=title, user_id=user_id, dataset_repo=dataset_repo, Dataset=Dataset)
+    print("##@##@##@##@##@ds_id:", dataset_id)
+    if dataset_id is None:
+        print("error: не удалось создать набор данных")
+        flash("error: не удалось создать набор данных")
         return redirect(url_for('create_dataset_page'))
 
     isforeign_id = request.form.get('isid') == 'on'
@@ -127,10 +128,11 @@ def create_dataset():
 
     if df is not None:
         status, message = add_entities(df, Entity, entity_repo, dataset_id, structure)
-        flash(message)
         if status is None:
             entity_repo.delete_entities_by_dataset_id(dataset_id)
             flash('error: произошла ошибка, данные удалены')
+        else:
+            flash(message)
     else:
         flash('error: error')
 
