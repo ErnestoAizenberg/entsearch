@@ -75,7 +75,8 @@ class DatasetRepository(BaseRepository):
         data = {
             'title': dataset.title,
             'password': dataset.password,
-            'user_id': dataset.user_id
+            'user_id': dataset.user_id,
+            'created': dataset.created
         }
         return self.insert_into('datasets', data)
 
@@ -94,11 +95,16 @@ class DatasetRepository(BaseRepository):
             dataset_row = cursor.execute('SELECT id FROM datasets WHERE password = ?', (password,)).fetchone()
             return dataset_row['id'] if dataset_row else None
 
-    def get_dataset_by_password(self, password):
+
+    def get_dataset(self, ds_id):
         with get_db_connection() as conn:
             cursor = conn.cursor()
-            dataset = cursor.execute('SELECT * FROM datasets WHERE password = ?', (password,)).fetchone()
-            return Dataset(title=dataset['title'], password=dataset['password'], user_id=dataset['user_id'], created=dataset['created'])
+            dataset = cursor.execute('SELECT * FROM datasets WHERE id = ?', (ds_id,)).fetchone()
+            return Dataset(title=dataset['title'],
+                    password=dataset['password'], 
+                    user_id=dataset['user_id'], 
+                    created=dataset['created']
+                   )
 
     def dataset_exists(self, dataset_id):
         return self.is_exist('datasets', dataset_id)
