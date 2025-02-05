@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block title %} Hi! {% endblock %}
+
+{% block content %}
+
+{% if not user_id %}
+<div class="notification">
+    <button class="close-btn" onclick="this.parentElement.style.display='none';">&times;</button>
+    <p class="message">With no account entered you are not able to use your own datasets but still having the access to the public opinions. <a href="/authorize/google">Sign-in</a></p>
+</div>
+{% endif %}
+
+
+<h1 class="blue-h1">NLP Model Prediction</h1>
+
+<div class="slam-container">{{user_id}}<br>  <div class="slam-flex">
+    <div class="dropdown" id="dropdown">
+        <button class="setting_button">⚙️</button>
+        <div class="dropdown-content" id="dropdown-content">
+            <span class="range_name">Threshold</span>
+            <div class="threshold">
+                  <span class="range_value" id="confidenceValue">0.50</span>
+                  <input type="range" min="0" max="100" value="50" class="slider" id="confidenceThreshold"> 
+                  <span class="whatitis">❓</span>
+                  <div class="info">Порог уверенности определяет, насколько уверенно модель должна делать предсказание, чтобы принять его во внимание. <a href="#">learn more</a></div>
+            </div>   
+            <span class="range_name">Precision - Recall</span>
+            <div class="precisionRecall">
+                <span class="range_value" id="precisionValue">0.50</span>
+                <input type="range" min="0" max="100" value="50" class="slider" id="precisionRecall">
+                <span class="whatitis">❓</span>
+                <div class="info">Соотношение точности и полноты настраивает баланс между количеством правильных предсказаний и полным охватом всех случаев. <a href="#">learn more</a></div>
+            </div>
+            <div class="checkbox-group">
+                <label class="custom-checkbox">
+                    <input type="checkbox" id="checkbox1"><span class="checkbox-label">Show description?</span>
+                </label>
+                <label class="custom-checkbox">
+                    <input type="checkbox" id="checkbox2">
+                    <span class="checkbox-label">Show text?</span>
+                </label>
+            </div>
+            <button class="btn-ok" onclick="closeContent()">ОК</button>
+        </div>
+    </div>
+
+
+        <form id="predict-form">       
+
+<select class="slam-select" name="select" id="dataset-select" multiple required onchange="updateLink()">
+
+    {% for public_dataset in public_datasets %}
+        <option value="{{public_dataset['password'] }}">{{ public_dataset['title'] }}
+        </option>
+    {% endfor %}
+
+
+    {% for user_dataset in user_datasets %}
+        <option value="{{ user_dataset['password'] }}">{{ user_dataset['title'] }}
+        </option>
+    {% endfor %}
+
+</select>
+</div>
+
+
+<div class="slam-flex">
+     <div class="links">
+            <div class="link-container">
+                <a href="/current/SngNQqrvFiQs" id="current_dataset_link">Current</a>
+            </div>
+     </div>
+
+        <a class="setting_button" href="/current/0">➕</a>
+</div>
+
+
+
+
+            <textarea name="text" rows="4" cols="50" placeholder="Enter text here..." required></textarea><br>
+            <input class="slam-blue-button" type="submit" value="predict">
+        </form>
+
+        <h1 class="blue-h1">Prediction Results</h1>
+        <div id="result"></div>
+    </div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+

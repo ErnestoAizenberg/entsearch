@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %} Upload File {% endblock %}
+{% block additional_css %}
+{% endblock %}
+{% block content %}
+
+    <h1 class="blue-h1">Create Your Dataset</h1>
+
+<div class="stek-container">
+
+    <form action="/create_dataset" method="post" enctype="multipart/form-data">  
+    
+    <div class="dropdown">
+        <button class="setting_button" type="button" id="setting-button-id">&#x2699;&#xFE0F;</button>
+        <div class="dropdown-content">
+
+            <label for="isid_checkbox">Use own id?</label>
+            <input name="isid" id="isid_checkbox" type="checkbox" onchange="toggleIdInput()"><br><br>
+            <div id="idInputWrapper" style="display: none;">
+                <label for="id_p">Position of ID Column (optional):</label><br>
+                <input type="number" id="id_p" name="id_p" min="0" placeholder="e.g. 0" value="0"><br><br>
+            </div>
+
+            <label for="name_p">Position of Name Column:</label><br>
+            <input type="number" id="name_p" name="name_p" min="0" placeholder="e.g. 0" value="0" required><br><br>
+
+            <label for="description_p">Position of Description Column:</label><br>
+            <input type="number" id="description_p" name="description_p" min="0" placeholder="e.g. 1" value="1" required><br><br>
+
+            <button type="button" class="btn-ok">ОК</button>
+        </div>
+    </div>
+
+    <label for="name_file" class="stek-label">Dataset Title:</label>
+    <input type="text" id="name_file" name="name_file" placeholder="Enter dataset title" class="stek-input">
+
+    <div class="stek-group">
+      <label for="csv-file" class="stek-label">Upload CSV File:</label>
+      <input type="file" id="csv-file" name="csv-file" accept=".csv" class="stek-file-input">
+    </div>
+
+    <button type="submit" class="stek-submit">Create Dataset</button>
+  </form>
+</div>
+
+{% endblock %}

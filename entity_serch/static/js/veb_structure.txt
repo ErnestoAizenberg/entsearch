@@ -1,0 +1,51 @@
+
+
+entsearch
+    ├── requirements.txt 
+    ├── entity_serch
+    │   ├── templates/
+    │   ├── static
+    │   │   ├── cs/all.min.css
+    │   │   └── js/all.min.js
+    │   │
+    │   ├── __init__.py
+    │   ├── config.py
+    │   ├── controller.py
+    │   ├── views.py
+    │   ├── models.py
+    │   ├── repositories.py
+    │   └── utils.py
+    ├── uploads/
+    ├── app.db
+    └── run.py
+
+#run.py
+from entity_serch import app, socketio
+socketio.run(app, debug=True)
+
+#controller.py
+@socketio.on('predict')
+def handle_prediction(data):
+
+<-- HTML -->
+###base.html
+<html>
+<head>
+{{ title }}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/all.min.css') }}">
+</head>
+<body>
+<div class="navbar></div>
+{% with massages = get_flashed_messages() %}
+{{ content }}
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js"></script>
+  <script src="{{ url_for('static', filename='js/all.min.js') }}"></script>
+</body>
+</html>
+
+
+
+
+
+

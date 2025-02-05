@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %} users{% endblock %}
+{% block content %}
+
+    <header>
+        <h1>Sign-uped Users </h1>
+    </header>
+    <div class="competitions-container">
+        {% for competition in users %}
+        <div class="competition-card">
+            <h2 style="color: rgba(230, 230, 255, 0.9);">{{ competition.username }}</h2> <!-- Мягко фиолетовый текст -->
+            <p class="competition-date">{{ competition.created }}</p> <!-- Дата состязания -->
+
+            <p class="competition-date">{{ competition.password }}</p>
+
+            <p class="competition-date">{{ competition.email }}</p>
+
+            <a href="{{ url_for('prediction_page', competition_id=competition.id) }}" class="join-button">More information</a>
+        </div>
+        {% else %}
+        <p style="color: rgba(230, 230, 255, 0.9);">Нет доступных соревнований.</p> <!-- Мягко фиолетовый текст -->
+        {% endfor %}
+    </div>
+    <a href="{{ url_for('login_page') }}" class="create-button">Sign-up</a>
+{% endblock %} 
