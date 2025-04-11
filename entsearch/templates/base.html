@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}Here we go{% endblock %}
+    </title>
+   
+  <link href="{{ url_for('static', filename='icons/favicon-16x16.png') }}" rel="icon" type="image/x-icon">
+  <link rel="shortcut icon" href="/static/icons/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/all.min.css') }}">
+  {% block additional_css %}
+  {% endblock %}
+</head>
+
+<body class="{% if request.path == '/datasets' %}datasets_page{% endif %}">
+
+    {% include 'navbar.html' %}
+    {% block content %}{% endblock %}
+
+   <script src="{{ url_for('static', filename='js/socketio.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/all.min.js') }}"></script>
+  {% block additional_js %}
+  {% endblock %}
+</body>
+</html>

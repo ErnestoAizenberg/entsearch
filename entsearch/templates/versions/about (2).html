@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}About{% endblock %}
+{% block content %}
+{% block additional_css %}
+<style>
+       
+        .license-section {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .license-header {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .license-text {
+            font-size: 16px;
+            color: #555;
+        }
+        .license-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .license-link:hover {
+            text-decoration: underline;
+        }
+</style>
+{% endblock additional_css %}
+
+<div class="slam-container">  
+
+    <a href="https://github.com/ErnestoAizenberg/entsearch" target="_blank">
+    <img src="https://img.shields.io/badge/GitHub-MyRepo-blue" alt="GitHub">
+</a>
+    <h1>О нашем приложении</h1>
+    <p>Мы рады представить вам наше приложение, разработанное для вашего удобства. Вся информация о проекте, его функциональности и особенностях представлена ниже.</p>
+
+
+<div class="notification">
+    <p class="message">Это приложение лицензировано под <strong>MIT License</strong>. MIT License позволяет любому желающему использовать, копировать, изменять и распространять код приложения с минимальными ограничениями. 
+<a class="license-link" href="https://opensource.org/licenses/MIT" target="_blank">Подробности и полный текст лицензии</a>
+</div>
+
+
+<div class="slam-container">
+    <p>Я увлеченный исследователь мира технологий и кофе. ☕</p>
+    <p>Когда не пишу код, мечтаю о далеких планетах и пушистых котиках. 🐾</p>
+    <br>
+    Telegram: <a href="https://t.me/@S_k_a_r_a_m_u_c_h_a">https://t.me/@S_k_a_r_a_m_u_c_h_a</a>
+    <br>
+    E-mail: <a href="mailto:sereernest@gmail.com">sereernest@gmail.com</a>
+</div>
+</div>
+
+
+{% endblock content %}

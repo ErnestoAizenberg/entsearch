@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Here we go</title>
+   
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/all.min.css') }}">
+   <style>
+   .named-entity{
+     color: red;
+   }
+   .dropdown-info-menu{
+    }
+   .drop-info{
+   }
+   </style>
+</head>
+
+<body>
+    {% include 'navbar.html' %}<br>
+
+<div class="slam-container">
+
+  <div class="notification">
+    <p class="message">Trump plans to speak to Chinese President Xi Jinping later in the week, a White House spokesperson said.</p>
+  </div>
+
+
+  <div class="notification">
+    <p class="message">
+      <span class="named-entity">Trump</span>
+       <span class="drop-info">❓</span>
+        <div class="dropdown-info">Us Président</div>
+
+   plans to speak to Chinese President
+     <span class="named-entity">Xi Jinping</span>
+       <span class="drop-info">❓</span>
+        <div class="dropdown-info">Chinese president</div>        
+
+   later in the week, a 
+    <span class="named-entity">White House</span>
+       <span class="drop-info">❓</span>
+        <div class="dropdown-info">White House is a...</div>
+   spokesperson said.</p>
+  </div>
+
+</div>
+
+   <script src="{{ url_for('static', filename='js/socketio.min.js') }}"></script>
+   
+  <script src="{{ url_for('static', filename='js/new.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/all.min.js') }}"></script>
+</body>
+</html>
+
+
