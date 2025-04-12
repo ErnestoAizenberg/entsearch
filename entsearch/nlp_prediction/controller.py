@@ -1,9 +1,9 @@
 # socketio, emit, entity_repo, nlp_model
 
-from entity_serch import socketio, entity_repo
-from flask_socketio import emit
-from entity_serch import nlp_model
 import time
+
+from entity_serch import entity_repo, nlp_model, socketio
+from flask_socketio import emit
 
 
 @socketio.on("predict")

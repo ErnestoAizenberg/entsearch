@@ -1,8 +1,11 @@
 import logging
-from entsearch import socketio, entity_repo, dataset_repo
-from flask_socketio import emit
-from typing import List
 import time
+from typing import List
+
+from flask_socketio import emit
+
+from entsearch import dataset_repo, entity_repo, socketio
+
 from .models.pure_entsearch import NameProbabilityAnalyzer
 
 # Настройка логгирования

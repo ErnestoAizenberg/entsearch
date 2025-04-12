@@ -1,10 +1,13 @@
 # app, session, redirect, url_for, current_app, urlencode, user_repo, User, response, requests, request, secrets
 
-from entsearch import app, User, user_repo
-from flask import redirect, url_for, session, current_app, request, abort, flash
-import requests
 import secrets
 from urllib.parse import urlencode
+
+import requests
+from flask import (abort, current_app, flash, redirect, request, session,
+                   url_for)
+
+from entsearch import User, app, user_repo
 
 
 @app.route("/logout")

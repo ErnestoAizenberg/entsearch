@@ -1,18 +1,11 @@
-from flask import (
-    Blueprint,
-    redirect,
-    url_for,
-    session,
-    current_app,
-    request,
-    abort,
-    flash,
-)
-import requests
 import secrets
-from urllib.parse import urlencode
-from typing import Optional, Dict, Any, Tuple, Callable
 from dataclasses import dataclass
+from typing import Any, Callable, Dict, Optional, Tuple
+from urllib.parse import urlencode
+
+import requests
+from flask import (Blueprint, abort, current_app, flash, redirect, request,
+                   session, url_for)
 
 auth_bp = Blueprint("auth", __name__, url_prefix="")
 

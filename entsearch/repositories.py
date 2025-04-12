@@ -1,5 +1,6 @@
 import sqlite3
-from .models import User, Dataset, Entity
+
+from .models import Dataset, Entity, User
 
 
 def get_db_connection(db_name="app.db"):

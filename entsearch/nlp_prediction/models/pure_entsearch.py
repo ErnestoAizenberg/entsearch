@@ -1,7 +1,7 @@
 import re
-from typing import List, Dict
-from difflib import SequenceMatcher
 from collections import defaultdict
+from difflib import SequenceMatcher
+from typing import Dict, List
 
 
 class NameProbabilityAnalyzer:

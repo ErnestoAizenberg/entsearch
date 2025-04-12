@@ -1,7 +1,8 @@
 # app, session, render_template
 
+from flask import render_template, session
+
 from entsearch import app
-from flask import session, render_template
 
 
 @app.route("/login", methods=["GET", "POST"])

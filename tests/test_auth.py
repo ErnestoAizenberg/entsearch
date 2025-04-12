@@ -1,5 +1,6 @@
-import pytest
 from unittest.mock import MagicMock, patch
+
+import pytest
 from auth import auth_bp, get_provider_config
 from flask import Flask, session, url_for
 

@@ -1,12 +1,12 @@
 # session, dataset_repo, request, app, insert_dataset, flash, entity_repo, redirect, url_for, Entity
 
-from entsearch import app
-from flask import redirect, url_for, flash, session, request
-from entsearch import Entity, Dataset
-from entsearch import dataset_repo, entity_repo
+import json
 import secrets
 from datetime import datetime
-import json
+
+from flask import flash, redirect, request, session, url_for
+
+from entsearch import Dataset, Entity, app, dataset_repo, entity_repo
 
 
 def insert_dataset(user_id, title=None):

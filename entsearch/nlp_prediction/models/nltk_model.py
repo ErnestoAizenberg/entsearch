@@ -1,10 +1,11 @@
-import nltk
 import os
-from nltk.tokenize import word_tokenize
-from nltk.tag import pos_tag
-from nltk.chunk import ne_chunk
-from typing import List, Dict
 from collections import defaultdict
+from typing import Dict, List
+
+import nltk
+from nltk.chunk import ne_chunk
+from nltk.tag import pos_tag
+from nltk.tokenize import word_tokenize
 
 
 def setup_nltk() -> None:

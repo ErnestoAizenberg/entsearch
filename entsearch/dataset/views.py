@@ -1,10 +1,8 @@
 # app, get_user_id, render_template, session, dataset_repo, entity_repo
 
-from entsearch import app
-
 from flask import render_template, session
-from entsearch import dataset_repo, entity_repo
 
+from entsearch import app, dataset_repo, entity_repo
 
 public_id = 1
 

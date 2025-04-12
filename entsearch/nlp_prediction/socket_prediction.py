@@ -1,8 +1,11 @@
 import logging
-from typing import List, Optional, Tuple
 import time
-from entsearch import socketio, entity_repo, dataset_repo
+from typing import List, Optional, Tuple
+
 from flask_socketio import emit
+
+from entsearch import dataset_repo, entity_repo, socketio
+
 from .models.pure_entsearch import NameProbabilityAnalyzer
 
 logging.basicConfig(
