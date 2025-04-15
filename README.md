@@ -2,7 +2,7 @@
 
 **An open-source entity search tool** – extract and identify entities in text based on your custom datasets.  
 
-![Main DeskTop Page](./docs/screenshots/screen (3).jpg?raw=true)
+![Main mobile page](https://github.com/ErnestoAizenberg/entsearch/blob/main/docs%2Fscreenshots%2Fmain_page_menu_open.jpg)
 
 ### **Key Features**  
 🚀 **Real-Time Client-Server Interaction** – Powered by Socket.IO for fast, seamless communication.  
