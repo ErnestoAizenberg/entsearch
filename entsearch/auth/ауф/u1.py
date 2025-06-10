@@ -2,8 +2,7 @@ import secrets
 from urllib.parse import urlencode
 
 import requests
-from flask import (abort, current_app, flash, redirect, request, session,
-                   url_for)
+from flask import abort, current_app, flash, redirect, request, session, url_for
 
 from entsearch import User, app, user_repo
 
@@ -19,7 +18,7 @@ def logout():
 @app.route("/authorize/<provider>")
 def oauth2_authorize(provider):
     if "user_id" in session:
-        print(f"User already logged in. Redirecting to prediction page.")
+        print("User already logged in. Redirecting to prediction page.")
         return redirect(url_for("prediction_page"))
 
     provider_data = current_app.config["OAUTH2_PROVIDERS"].get(provider)
@@ -51,7 +50,7 @@ def oauth2_authorize(provider):
 @app.route("/callback/<provider>")
 def oauth2_callback(provider):
     if "user_id" in session:
-        print(f"User already logged in. Redirecting to prediction page.")
+        print("User already logged in. Redirecting to prediction page.")
         return redirect(url_for("prediction_page"))
 
     provider_data = current_app.config["OAUTH2_PROVIDERS"].get(provider)
@@ -76,7 +75,7 @@ def oauth2_callback(provider):
         print("Authorization code not found in request.")
         abort(401)
 
-    print(f"Exchanging authorization code for access token.")
+    print("Exchanging authorization code for access token.")
     response = requests.post(
         provider_data["token_url"],
         data={
@@ -104,7 +103,7 @@ def oauth2_callback(provider):
         print("Access token is missing in the response.")
         abort(401)
 
-    print(f"Fetching user information using the access token.")
+    print("Fetching user information using the access token.")
     response = requests.get(
         provider_data["userinfo"]["url"],
         headers={

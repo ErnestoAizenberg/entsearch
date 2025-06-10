@@ -42,9 +42,12 @@ def create_dataset_page():
 
 @app.route("/dataset/<string:dataset_password>")
 def dataset_detail(dataset_password):
+    user_id = session.get("user_id")
+
     ds_id = dataset_repo.get_id_by_password(dataset_password)
     dataset = dataset_repo.get_dataset(ds_id)
-    print("###ds_id: ", ds_id, "dataset: ", dataset)
+
+    print(f"dataset received: {dataset}")
     if dataset is None:
         return "Dataset not found", 404
 

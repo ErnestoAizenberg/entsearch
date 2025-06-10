@@ -182,7 +182,6 @@ class DatasetRepository(BaseRepository):
 
 # Entity repository
 class EntityRepository(BaseRepository):
-
     ALLOWED_COLUMNS = [
         "entity_name",
         "description",

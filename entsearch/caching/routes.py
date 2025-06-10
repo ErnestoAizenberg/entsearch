@@ -1,3 +1,6 @@
+from flask import send_from_directory
+
+
 def configure_cache(app):
     @app.after_request
     def add_cache_headers(response):

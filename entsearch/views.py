@@ -1,4 +1,4 @@
-from flask import render_template, session
+from flask import abort, render_template, session
 
 from entsearch import app, user_repo
 

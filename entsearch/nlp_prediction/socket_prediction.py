@@ -92,7 +92,7 @@ def get_probabilities(text: str, names: List[str]) -> Optional[List[float]]:
         logger.info(
             f"Probability stats - max: {max(probabilities):.2f}, "
             f"min: {min(probabilities):.2f}, "
-            f"mean: {sum(probabilities)/len(probabilities):.2f}"
+            f"mean: {sum(probabilities) / len(probabilities):.2f}"
         )
         return probabilities
     except Exception as e:

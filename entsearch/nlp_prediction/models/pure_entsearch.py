@@ -1,5 +1,4 @@
 import re
-from collections import defaultdict
 from difflib import SequenceMatcher
 from typing import Dict, List
 

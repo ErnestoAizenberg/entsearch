@@ -1,6 +1,5 @@
 # socketio, emit, entity_repo, nlp_model
 
-import time
 
 from entity_serch import entity_repo, nlp_model, socketio
 from flask_socketio import emit
@@ -18,13 +17,15 @@ def handle_prediction(data):
         lst_names = entity_repo.get_column_values(ds_id, "entity_name")
         lst_descriptions = entity_repo.get_column_values(ds_id, "description")
         name_embedding = entity_repo.get_column_values(ds_id, "entity_name_embed")
+        print("name_embedding: ", name_embedding)
 
         lst_of_shure, lst_of_id = nlp_model(text=input_text)
 
         sorted_inds = [i for i in range(len(lst_of_id)) if lst_of_shure[i] >= threshold]
-        lst_of_shure, lst_of_id = [lst_of_shure[i] for i in sorted_inds], [
-            lst_of_id[i] for i in sorted_inds
-        ]
+        lst_of_shure, lst_of_id = (
+            [lst_of_shure[i] for i in sorted_inds],
+            [lst_of_id[i] for i in sorted_inds],
+        )
 
         amount = len(lst_of_id)
 

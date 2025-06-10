@@ -4,8 +4,7 @@ import secrets
 from urllib.parse import urlencode
 
 import requests
-from flask import (abort, current_app, flash, redirect, request, session,
-                   url_for)
+from flask import abort, current_app, flash, redirect, request, session, url_for
 
 from entsearch import User, app, user_repo
 

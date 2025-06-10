@@ -1,13 +1,10 @@
-# Entity, entity_repo, request, redirect, flash, pd(pandas), session, secrets, app
-
 import json
 import os
-# import pandas as pd
 import secrets
 from datetime import datetime
 
-import requests
-from flask import flash, redirect, render_template, request, session, url_for
+#import pandas as pd
+from flask import flash, redirect, request, session, url_for
 
 from entsearch import Dataset, Entity, app, dataset_repo, entity_repo
 
